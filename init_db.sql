@@ -35,16 +35,20 @@ CREATE TABLE IF NOT EXISTS goods_attributes (
     name TEXT,          -- attribute name
     description TEXT    -- attribute description
 );
-
-
-
 INSERT OR REPLACE INTO goods_attributes VALUES  (0, "size", "size_desc"),
                                                 (1, "weight", "weight_desc"),
                                                 (2, "color", "color_desc"),
                                                 (3, "fabricue_country", "fabricue_country_desc");
 
-
-
+CREATE TABLE IF NOT EXISTS goods_attributes_value (
+    goods_id INTEGER,
+    attr_id INTEGER,
+    value TEXT NOT NULL,          -- attribute name
+    FOREIGN KEY (goods_id)  REFERENCES goods (id),
+    FOREIGN KEY (attr_id)  REFERENCES goods_attributes (id)
+);
+DROP VIEW IF EXISTS goods_attribute_view;
+DROP VIEW IF EXISTS good_with_attributes;
 CREATE TABLE IF NOT EXISTS bot_info
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

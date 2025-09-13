@@ -1,0 +1,10 @@
+{
+  "title": "BAZA BOT",
+
+  "-- comment --": "описание ролей",
+
+  "user_desc": "Bot User",
+  "moder_desc": "Bot Moderator",
+  "admin_desc": "Bot Admin",
+  "owner_desc": "Bot Owner"
+}
