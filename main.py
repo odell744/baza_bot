@@ -4,7 +4,7 @@ import asyncio
 import configparser
 import json
 
-from async_faceit_api.dataclasses import Player
+from faceit.models import Player
 from telebot.async_telebot import AsyncTeleBot, logger
 from faceit import AsyncFaceit
 from telebot.types import Message, BotCommand, BotCommandScope, BotCommandScopeChatMember, BotCommandScopeDefault
@@ -52,11 +52,10 @@ async def search_ply_cmd(message):
         await asyncio.gather(future)
         try:
             player: Player = future.result()
-            player_info = dict(player)
             await bot.reply_to(message, f"searching player results:\n"
                                         f"\n*Player ID*: {player.id}"
                                         f"\n*Player Country*: {player.country.upper()}"
-                                        f"\n*Other Info:* {player_info}")
+                                        f"\n*Other Info:* {player}")
         except Exception as e:
             logger.error(e)
 
