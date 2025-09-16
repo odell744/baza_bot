@@ -3,6 +3,9 @@
 import asyncio
 import configparser
 import json
+import ssl
+
+from aiohttp import web
 
 from faceit.models import Player
 from telebot.async_telebot import AsyncTeleBot, logger
@@ -78,6 +81,8 @@ def main():
         BotCommand("search_player", "<player_name> поиск инфы о игроке")
     ], language_code="ru")
 
+
+    bot.set_webhook()
     asyncio.run(bot.polling())
 
 if __name__ == '__main__':

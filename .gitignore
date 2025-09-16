@@ -1,2 +1,5 @@
 .idea
 .venv
+*.pem
+settings.ini
+__pycache__
